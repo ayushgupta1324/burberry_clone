@@ -36,7 +36,7 @@ import { userLogin } from "../redux/AuthReducer/action";
     const { token} = useSelector((store) => store.auth);
     const dispatch = useDispatch();
     const navigate = useNavigate();
-  console.log(token)
+    console.log("token is",token)
     const toast = useToast();
     useEffect(() => {
       if (token) {
@@ -48,7 +48,7 @@ import { userLogin } from "../redux/AuthReducer/action";
       setFormstate({ ...formstate, [e.target.name]: e.target.value });
     };
     const handleTheSubmit = () => {
-      console.log(formstate);
+      console.log("formstate in Login",formstate);
     dispatch(userLogin(formstate))
     };
     return (
@@ -113,7 +113,7 @@ import { userLogin } from "../redux/AuthReducer/action";
                   <Checkbox>Remember me</Checkbox>
                   <Link color={"rgb(107,70,193)"}>Forgot password?</Link>
                 </Stack>
-             <Link to="/signup"><Text color="#6b46c1">New user? Signin</Text></Link>
+             <Link to="/signup"><Text color="#6b46c1">New user? Register</Text></Link>
                 <Button
                   bg={"rgb(107,70,193)"}
                   color={"white"}

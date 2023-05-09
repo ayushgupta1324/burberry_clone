@@ -22,7 +22,7 @@ export const AddProductData=(product)=>async(dispatch)=>{
         }
         
     })
-    console.log(res.data)
+    console.log("Product added", res.data)
     return dispatch({type:PostData,payload:res.data})
 }
 export const PatchProductData=(el)=>async(dispatch)=>{

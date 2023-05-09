@@ -48,7 +48,7 @@ const KidsPage = () => {
                     })
                 }
             </Grid>
-            <Button textTransform="uppercase" cursor="pointer" bg="transparent" padding="12px 40px">View 11 More</Button>
+            {/* <Button textTransform="uppercase" cursor="pointer" bg="transparent" padding="12px 40px">View 11 More</Button> */}
         </Box>
     )
 }

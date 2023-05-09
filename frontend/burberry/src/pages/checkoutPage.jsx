@@ -14,9 +14,10 @@ function Checkout() {
   const placeOrder = async () => {
     onOpen();
     try {
-      await axios.post("http://localhost:8080/orders/", { orders: data })
+      await axios.post("https://white-lovebird-ring.cyclic.app/orders", data)
+      
     } catch (error) {
-
+      console.log("Error is",error)
     }
   }
   return (

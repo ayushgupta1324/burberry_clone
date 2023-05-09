@@ -3,7 +3,7 @@ import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router'
 import Product from '../components/product'
-
+import { Skeleton, SkeletonCircle, SkeletonText } from '@chakra-ui/react'
 const MensPage = () => {
     const navigate = useNavigate()
     const [products, setProducts] = useState([])
@@ -22,6 +22,8 @@ const MensPage = () => {
     }, [sort])
 
     return (
+        <>
+       
         <Box pb="50px">
             <Heading fontSize="16px">Men’S OUTERWEAR</Heading>
             <Text fontSize="14px" m="auto" maxW={["70%", "50%", "30%"]}>Honouring the spirit of adventure inherent in every Burberry garment, the men’s outerwear collection mixes timeless trench coats with modern puffer jackets in seasonal Night Check.</Text>
@@ -48,8 +50,9 @@ const MensPage = () => {
                     })
                 }
             </Grid>
-            <Button textTransform="uppercase" cursor="pointer" bg="transparent" padding="12px 40px">View 11 More</Button>
+            {/* <Button textTransform="uppercase" cursor="pointer" bg="transparent" padding="12px 40px">View 11 More</Button> */}
         </Box>
+        </>
     )
 }
 

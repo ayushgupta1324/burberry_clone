@@ -146,7 +146,7 @@ import { userRegister } from "../redux/AuthReducer/action";
                   }}
                   onClick={handleTheSubmit}
                 >
-                  Sign in
+                  Register
                 </Button>
               </Stack>
             </Stack>

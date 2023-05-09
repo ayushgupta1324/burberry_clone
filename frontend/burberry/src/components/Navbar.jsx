@@ -21,8 +21,8 @@ const Navbar = () => {
             <Link to="/"><Image src="https://logos-world.net/wp-content/uploads/2020/10/Burberry-Logo.png" width="200px" height="100px"></Image></Link>
           </Box>
           <Flex gap="20px">
-            <Text fontSize={"20px"} fontWeight="500"  _hover={{borderBottom:"1px solid black",cursor:"pointer"}}>Gift</Text>
-            <Text fontSize={"20px"} fontWeight="500"  _hover={{borderBottom:"1px solid black",cursor:"pointer"}}>New in</Text>
+            {/* <Text fontSize={"20px"} fontWeight="500"  _hover={{borderBottom:"1px solid black",cursor:"pointer"}}>Gift</Text>
+            <Text fontSize={"20px"} fontWeight="500"  _hover={{borderBottom:"1px solid black",cursor:"pointer"}}>New in</Text> */}
             <Link to="/mens"><Text fontSize={"20px"} fontWeight="500"  _hover={{borderBottom:"1px solid black",cursor:"pointer"}}>Mens</Text></Link>
             <Link to="/womens"><Text fontSize={"20px"} fontWeight="500"  _hover={{borderBottom:"1px solid black",cursor:"pointer"}}>Women</Text></Link>
             <Link to="/kids"><Text fontSize={"20px"} fontWeight="500"  _hover={{borderBottom:"1px solid black",cursor:"pointer"}}>Children</Text></Link>
@@ -36,9 +36,9 @@ const Navbar = () => {
             <Menubar />
           </Flex>
           <Link to="/cartpage"><Icon as={BsHandbagFill} fontSize={"20px"} fontWeight="500" /></Link>
-          {
+          {/* {
             data.length>0?<Text>{data.length}</Text>:null
-          }
+          } */}
           
         </Flex>
       </Box>

@@ -8,10 +8,10 @@ import {Link} from "react-router-dom"
 const CartPage = () => {
   const {data}=useSelector((store)=>store.cart)
   const dispatch=useDispatch()
-  console.log(data)
+  console.log("data in cartPage",data)
 
   const subtotal=data.reduce((acc,el)=>acc+Number(el.product_price)*Number(el.quantity),0)
-console.log(subtotal)
+  console.log(subtotal)
   const handleAdd=(el)=>{
     dispatch(PatchProductData(el)).then(()=>{
       dispatch(productdata())

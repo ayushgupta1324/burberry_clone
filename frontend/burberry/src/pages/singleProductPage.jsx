@@ -5,18 +5,34 @@ import axios from 'axios';
 import styles from "./singleProductPage.module.css"
 import {RiStore3Fill} from "react-icons/ri"
 import {BsFillCalendarCheckFill} from "react-icons/bs"
-import { useDispatch } from 'react-redux';
-import { AddProductData } from '../redux/CartReducer/action';
+import { useDispatch, useSelector } from 'react-redux';
+import { AddProductData, PatchProductData } from '../redux/CartReducer/action';
 
 const SingleProductPage = () =>{
     const { isOpen, onOpen, onClose } = useDisclosure()
     const dispatch=useDispatch()
     const {id} = useParams();
     const [product, setProduct] = useState({})
+    const {data}=useSelector((store)=>store.cart)
 
     const getProduct = async () => {
-        const {data} = await axios.get(`http://localhost:8080/products/${id}`);
+        const {data} = await axios.get(`https://white-lovebird-ring.cyclic.app/products/${id}`);
         setProduct(data)
+    }
+
+    const checkCartData = async (product) =>{
+        console.log("Check cart data",data)
+        data.map((el)=>{
+            if(el._id===product._id)
+            {
+                dispatch(PatchProductData(el))
+            }
+            else
+            {
+                dispatch(AddProductData(product))
+            }
+        })
+        // ()=>dispatch(AddProductData(product))
     }
 
     useEffect(() => {
@@ -85,7 +101,7 @@ const SingleProductPage = () =>{
                         </Link>
                     </Text>
                     <Flex gap={"16px"} paddingBottom="30px">
-                        <button className={styles.bagBtn} onClick={()=>dispatch(AddProductData(product))}>ADD TO BAG</button>
+                        <button className={styles.bagBtn} onClick={()=>checkCartData(product)}>ADD TO BAG</button>
                         <button style={{width:"280px", height:"42px", textTransform:"uppercase", border:"1px solid black"}} className={styles.giftBtn}>Send using Gift</button>    
                     </Flex>
                     <Flex alignItems={"center"}>
