@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
-import { Box, Flex, Grid, Image, Text,Modal,ModalOverlay,ModalContent,ModalBody,ModalCloseButton, Link, useDisclosure } from "@chakra-ui/react"
-import { useParams } from "react-router-dom"
+import { useToast ,Box, Flex, Grid, Image, Text,Modal,ModalOverlay,ModalContent,ModalBody,ModalCloseButton, Link, useDisclosure } from "@chakra-ui/react"
+import { Navigate, useParams } from "react-router-dom"
 import axios from 'axios';
 import styles from "./singleProductPage.module.css"
 import {RiStore3Fill} from "react-icons/ri"
@@ -12,26 +12,61 @@ const SingleProductPage = () =>{
     const { isOpen, onOpen, onClose } = useDisclosure()
     const dispatch=useDispatch()
     const {id} = useParams();
+    const toast = useToast()
     const [product, setProduct] = useState({})
     const {data}=useSelector((store)=>store.cart)
+    const token = localStorage.getItem("token")
 
+    
     const getProduct = async () => {
         const {data} = await axios.get(`https://white-lovebird-ring.cyclic.app/products/${id}`);
         setProduct(data)
     }
 
     const checkCartData = async (product) =>{
-        console.log("Check cart data",data)
-        data.map((el)=>{
-            if(el._id===product._id)
+        if(!token)
+        {
+            toast({
+                title: 'Please Login first',
+                status: 'warning',
+                duration: 2000,
+                isClosable: true,
+                position:"top"
+            }) 
+            return <Navigate to="/login" replace={true}/>
+        }
+        else
+        {
+            console.log("Check cart data",data)
+            let cartFlag = false;
+            data.map((el)=>{
+                if(el._id===product._id)
+                {
+                    cartFlag=true
+                }
+            })
+            if(cartFlag)
             {
-                dispatch(PatchProductData(el))
+                toast({
+                    title: 'Product Already in Cart',
+                    status: 'warning',
+                    duration: 3000,
+                    isClosable: true,
+                })
+                dispatch(PatchProductData(product))
             }
             else
             {
+                toast({
+                    title: 'Product added to Cart',
+                    status: 'success',
+                    duration: 2000,
+                    isClosable: true,
+                  })
                 dispatch(AddProductData(product))
             }
-        })
+        }
+
         // ()=>dispatch(AddProductData(product))
     }
 
@@ -41,7 +76,7 @@ const SingleProductPage = () =>{
     console.log(product)
     return(
         <div>
-        <Box backgroundColor={"white"} marginBottom="36px">
+        <Box backgroundColor={"white"} marginBottom="36px" pt="90px">
             <Grid templateColumns={"repeat(2,1fr)"} gap="4px">
                 <Box>
                     <Image src={product.product_img} w="100%"></Image>

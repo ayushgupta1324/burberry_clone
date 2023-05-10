@@ -74,17 +74,18 @@ import { userRegister } from "../redux/AuthReducer/action";
     };
     return (
       <Flex
-        minH={"100vh"}
+        minH={"80vh"}
         align={"center"}
         justify={"center"}
         bg={useColorModeValue("gray.50", "gray.800")}
+        pt="90px"
       >
-        <Stack spacing={8} mx={"auto"} maxW={"lg"} py={12} px={6}>
+        <Stack spacing={8} mx={"auto"} maxW={"lg"} py={5} px={6}>
           <Stack align={"center"}>
-            <Heading fontSize={"4xl"}>Register</Heading>
-            <Text fontSize={"lg"} color={"gray.600"}>
+            <Heading fontSize={"3xl"}>Register</Heading>
+            {/* <Text fontSize={"lg"} color={"gray.600"}>
               to enjoy all of our cool features ✌️
-            </Text>
+            </Text> */}
           </Stack>
           <Box
             rounded={"lg"}
@@ -120,7 +121,7 @@ import { userRegister } from "../redux/AuthReducer/action";
                       onClick={handleClick}
                     >
                       {show ? (
-                        <Icon color={"rgb(107,70,193)"} as={BsFillEyeSlashFill} />
+                        <Icon color={"rgb(0,0,0)"} as={BsFillEyeSlashFill} />
                       ) : (
                         <Icon color={"rgb(107,70,193)"} as={BsFillEyeFill} />
                       )}
@@ -139,11 +140,11 @@ import { userRegister } from "../redux/AuthReducer/action";
                   <Link color={"rgb(107,70,193)"}>Forgot password?</Link>
                 </Stack>
                 <Button
-                  bg={"rgb(107,70,193)"}
-                  color={"white"}
-                  _hover={{
-                    bg: "rgb(107,70,193)",
-                  }}
+                  bg={"rgb(255,255,255)"}
+                  color={"black"}
+                  fontWeight="bold"
+                  border="2px solid black"
+                  _hover={{backgroundColor:"black", color:"white", border:"2px solid black", fontWeight:"bold"}}
                   onClick={handleTheSubmit}
                 >
                   Register

@@ -59,6 +59,6 @@ export const DeleteProductData=(id)=>async(dispatch)=>{
         
     })
     console.log(res.data)
-    alert(res.data.msg)
+    // alert(res.data.msg)
     return dispatch({type:deleteData})
 }

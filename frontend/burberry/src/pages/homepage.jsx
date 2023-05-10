@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 const Homepage = () => {
   return (
     <div>
-      <Box>
+      <Box pt="96px">
         <Grid templateColumns={"repeat(2,1fr)"} gap="5px">
           <Link to="/womens">
             <Box>

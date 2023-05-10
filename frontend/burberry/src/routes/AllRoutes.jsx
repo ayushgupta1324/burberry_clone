@@ -10,6 +10,7 @@ import SingleProductPage from '../pages/singleProductPage'
 import KidsPage from '../pages/kidsPage'
 import CartPage from '../pages/cartPage'
 import Checkout from '../pages/checkoutPage'
+import PrivateRoute from './PrivateRoute'
 
 const AllRoutes = () => {
     return (
@@ -22,7 +23,7 @@ const AllRoutes = () => {
             <Route path="/admin/*" element={<AdminHomePage />}></Route>
             <Route path="/signup" element={<SignIn />}></Route>
             <Route path="/login" element={<LoginPage />}></Route>
-            <Route path="/cartpage" element={<CartPage />}></Route>
+            <Route path="/cartpage" element={<PrivateRoute><CartPage /></PrivateRoute>}></Route>
             <Route path="/checkout" element={<Checkout />}></Route>
         </Routes>
     )

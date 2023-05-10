@@ -24,6 +24,7 @@ import {
   import { useNavigate } from "react-router-dom";
   import {Link} from "react-router-dom"
 import { userLogin } from "../redux/AuthReducer/action";
+import axios from "axios";
   const initState = {
     email: "",
     password: "",
@@ -47,18 +48,21 @@ import { userLogin } from "../redux/AuthReducer/action";
     const handleTheChange = (e) => {
       setFormstate({ ...formstate, [e.target.name]: e.target.value });
     };
-    const handleTheSubmit = () => {
-      console.log("formstate in Login",formstate);
+    const handleTheSubmit = async () => {
+    const res = await axios.get("https://white-lovebird-ring.cyclic.app/user")
+    console.log("users signed up",res)
+    // console.log("formstate in Login",formstate);
     dispatch(userLogin(formstate))
     };
     return (
       <Flex
-        minH={"100vh"}
+        minH={"80vh"}
         align={"center"}
         justify={"center"}
         bg={useColorModeValue("gray.50", "gray.800")}
+        pt="96px"
       >
-        <Stack spacing={8} mx={"auto"} maxW={"lg"} py={12} px={6}>
+        <Stack spacing={8} mx={"auto"} maxW={"lg"} py={5} px={6}>
           <Stack align={"center"}>
             <Heading fontSize={{base : "24px",md:"",lg:"4xl"}}>Login to your account</Heading>
             <Text fontSize={"lg"} color={"gray.600"}>
@@ -95,9 +99,9 @@ import { userLogin } from "../redux/AuthReducer/action";
                       onClick={handleClick}
                     >
                       {show ? (
-                        <Icon color={"rgb(107,70,193)"} as={BsFillEyeSlashFill} />
+                        <Icon color={"rgb(0,0,0)"} as={BsFillEyeSlashFill} />
                       ) : (
-                        <Icon color={"rgb(107,70,193)"} as={BsFillEyeFill} />
+                        <Icon color={"rgb(0,0,0)"} as={BsFillEyeFill} />
                       )}
                     </Button>
                   </InputRightElement>
@@ -115,11 +119,11 @@ import { userLogin } from "../redux/AuthReducer/action";
                 </Stack>
              <Link to="/signup"><Text color="#6b46c1">New user? Register</Text></Link>
                 <Button
-                  bg={"rgb(107,70,193)"}
+                  bg={"rgb(0,0,0)"}
                   color={"white"}
-                  _hover={{
-                    bg: "rgb(107,70,193)",
-                  }}
+                  fontWeight="bold"
+                  border="2px solid black"
+                  _hover={{backgroundColor:"white", color:"black", border:"2px solid black", fontWeight:"bold"}}
                   onClick={handleTheSubmit}
                 >
                   Login

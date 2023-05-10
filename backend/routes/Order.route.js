@@ -1,14 +1,11 @@
 const express = require("express")
 
-const app = express()
-
 const { OrderModel } = require("../model/Order.model")
 
 const orderRouter = express.Router()
 
-app.use(express.json())
 
-orderRouter.get("/", async (req, res) => {
+orderRouter.get("/userOrders", async (req, res) => {
     const userId = req.body.userId
     try {
         const data = await OrderModel.find({ userId })
@@ -33,11 +30,13 @@ orderRouter.get("/admin/order", async (req, res) => {
     }
 })
 
-orderRouter.post("/", async (req, res) => {
-    const orders = req.body.orders
+orderRouter.post("/", async(req, res) => {
+    const order = req.body
+   // console.log(order)
     try {
-        await OrderModel.insertMany(orders)
-        res.send({ msg: "Order Placed Successfully" })
+       let orders =  await OrderModel.insertMany(order)
+      
+    res.send({ msg: "Order Placed Successfully",data})
     } catch (error) {
         res.send({
             err: "Can't place Orders",

@@ -14,6 +14,7 @@ function Checkout() {
   const placeOrder = async () => {
     onOpen();
     try {
+      console.log("Data in cart",data)
       await axios.post("https://white-lovebird-ring.cyclic.app/orders", data)
       
     } catch (error) {
@@ -21,7 +22,7 @@ function Checkout() {
     }
   }
   return (
-    <Box>
+    <Box pt="80px">
       <Flex width="90%" margin="auto" paddingBottom={"40px"}>
         <Box width="65%" margin="auto" marginTop="20px">
           <Flex>

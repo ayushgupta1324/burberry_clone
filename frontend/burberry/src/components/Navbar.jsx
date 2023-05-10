@@ -10,26 +10,27 @@ import { BsHandbagFill } from "react-icons/bs"
 const Navbar = () => {
   const location = useLocation();
   const {data}=useSelector((store)=>store.cart)
+
   if (location.pathname.includes("admin")) {
     return <></>
   }
   return (
     <div>
-      <Box width="90%" margin="auto">
-        <Flex alignItems={"center"} justifyContent="space-around">
+      <Box width="100%" margin="auto" zIndex={"500"} bgColor={"white"}>
+        <Flex alignItems={"center"} justifyContent="space-around" position="fixed" w="100%" bg="white">
           <Box>
             <Link to="/"><Image src="https://logos-world.net/wp-content/uploads/2020/10/Burberry-Logo.png" width="200px" height="100px"></Image></Link>
           </Box>
-          <Flex gap="20px">
-            {/* <Text fontSize={"20px"} fontWeight="500"  _hover={{borderBottom:"1px solid black",cursor:"pointer"}}>Gift</Text>
-            <Text fontSize={"20px"} fontWeight="500"  _hover={{borderBottom:"1px solid black",cursor:"pointer"}}>New in</Text> */}
+          <Flex gap="24px">
             <Link to="/mens"><Text fontSize={"20px"} fontWeight="500"  _hover={{borderBottom:"1px solid black",cursor:"pointer"}}>Mens</Text></Link>
             <Link to="/womens"><Text fontSize={"20px"} fontWeight="500"  _hover={{borderBottom:"1px solid black",cursor:"pointer"}}>Women</Text></Link>
             <Link to="/kids"><Text fontSize={"20px"} fontWeight="500"  _hover={{borderBottom:"1px solid black",cursor:"pointer"}}>Children</Text></Link>
             <Text fontSize={"20px"} fontWeight="500"  _hover={{borderBottom:"1px solid black",cursor:"pointer"}}>Outwear</Text>
             <Text fontSize={"20px"} fontWeight="500"  _hover={{borderBottom:"1px solid black",cursor:"pointer"}}>Bags</Text>
             <Text fontSize={"20px"} fontWeight="500"  _hover={{borderBottom:"1px solid black",cursor:"pointer"}}>Stories</Text>
-            <Text fontSize={"20px"} fontWeight="500"  _hover={{borderBottom:"1px solid black",cursor:"pointer"}}>Values</Text>
+            {/* <Text fontSize={"20px"} fontWeight="500"  _hover={{borderBottom:"1px solid black",cursor:"pointer"}}>Gift</Text>
+            <Text fontSize={"20px"} fontWeight="500"  _hover={{borderBottom:"1px solid black",cursor:"pointer"}}>New in</Text> */}
+            {/* <Text fontSize={"20px"} fontWeight="500"  _hover={{borderBottom:"1px solid black",cursor:"pointer"}}>Values</Text> */}
           </Flex>
           <Flex gap="30px" alignItems={"center"}>
             <Icon as={AiOutlineSearch} fontSize={"20px"} fontWeight="500" />
