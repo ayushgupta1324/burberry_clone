@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useToast ,Box, Flex, Grid, Image, Text,Modal,ModalOverlay,ModalContent,ModalBody,ModalCloseButton, Link, useDisclosure } from "@chakra-ui/react"
-import { Navigate, useParams } from "react-router-dom"
+import { Navigate, useNavigate, useParams } from "react-router-dom"
 import axios from 'axios';
 import styles from "./singleProductPage.module.css"
 import {RiStore3Fill} from "react-icons/ri"
@@ -15,25 +15,26 @@ const SingleProductPage = () =>{
     const toast = useToast()
     const [product, setProduct] = useState({})
     const {data}=useSelector((store)=>store.cart)
-    const token = localStorage.getItem("token")
-
+    const navigate = useNavigate()
     
     const getProduct = async () => {
         const {data} = await axios.get(`https://white-lovebird-ring.cyclic.app/products/${id}`);
         setProduct(data)
     }
-
+    
     const checkCartData = async (product) =>{
+        const token = localStorage.getItem("token")
         if(!token)
         {
             toast({
-                title: 'Please Login first',
-                status: 'warning',
-                duration: 2000,
-                isClosable: true,
-                position:"top"
+                title: 'Login to Add to Bag',
+            status: 'info',
+            duration: 2000,
+            isClosable: true,
+            position:"top",
+            variant:"left-accent"
             }) 
-            return <Navigate to="/login" replace={true}/>
+            navigate("/login")
         }
         else
         {

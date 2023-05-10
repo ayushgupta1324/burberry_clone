@@ -16,8 +16,8 @@ const Navbar = () => {
   }
   return (
     <div>
-      <Box width="100%" margin="auto" zIndex={"500"} bgColor={"white"}>
-        <Flex alignItems={"center"} justifyContent="space-around" position="fixed" w="100%" bg="white">
+      <Box width="100%" margin="auto"  bgColor={"white"}>
+        <Flex alignItems={"center"} zIndex={"500"} justifyContent="space-around" position="fixed" w="100%" bg="white">
           <Box>
             <Link to="/"><Image src="https://logos-world.net/wp-content/uploads/2020/10/Burberry-Logo.png" width="200px" height="100px"></Image></Link>
           </Box>

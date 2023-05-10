@@ -1,20 +1,16 @@
 import {
   Box,
-  Button,
-  Flex,
   Grid,
-  GridItem,
   Heading,
   HStack,
   Select,
-  Stack,
   Text,
 } from "@chakra-ui/react";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
 import Product from "../components/product";
-import { Skeleton, SkeletonCircle, SkeletonText } from "@chakra-ui/react";
+import SkeletonComponent from "../components/SkeletonComponent";
 const MensPage = () => {
   const navigate = useNavigate();
   const [products, setProducts] = useState([]);
@@ -26,6 +22,7 @@ const MensPage = () => {
       `https://white-lovebird-ring.cyclic.app/products?category=Men&price=${sort}`
     );
     setProducts(data);
+    setIsLoading(false)
   };
 
   const changeCategory = (category) => {
@@ -33,7 +30,7 @@ const MensPage = () => {
   };
   useEffect(() => {
     setIsLoading(true)
-    getProducts().then(setIsLoading(false))
+    getProducts()
   }, [sort]);
 
   return (
@@ -87,50 +84,12 @@ const MensPage = () => {
         <Text fontSize="12px">{products.length} results</Text>
         <Text fontWeight="500">Discover Heritage Trench Coats</Text>
         {isLoading ? (
-         <Box w="90%" m="auto" zIndex="1">
-         <Grid templateColumns="repeat(4, 1fr)" gap={6}>
-           <GridItem>
-             <Stack>
-               <Skeleton height="40px" />
-               <Skeleton height="20px" />
-               <Skeleton height="20px" />
-               <Skeleton height="20px" />
-             </Stack>
-           </GridItem>
-           <GridItem>
-             <Stack>
-               <Skeleton height="40px" />
-               <Skeleton height="20px" />
-               <Skeleton height="20px" />
-               <Skeleton height="20px" />
-             </Stack>
-           </GridItem>
-           <GridItem>
-             <Stack>
-               <Skeleton height="40px" />
-               <Skeleton height="20px" />
-               <Skeleton height="20px" />
-               <Skeleton height="20px" />
-             </Stack>
-           </GridItem>
-           <GridItem>
-             <Stack>
-               <Skeleton height="40px" />
-               <Skeleton height="20px" />
-               <Skeleton height="20px" />
-               <Skeleton height="20px" />
-             </Stack>
-           </GridItem>
-         </Grid>
-       </Box>// Display loader while data is being fetched
+        <SkeletonComponent/>
       ) :( <Grid mt="50px" mb="50px" gap="2px" gridTemplateColumns="repeat(4,1fr)">
       {products.map((item) => {
         return <Product key={item._id} {...item} />;
       })}
     </Grid>)}
-        
-       
-        {/* <Button textTransform="uppercase" cursor="pointer" bg="transparent" padding="12px 40px">View 11 More</Button> */}
       </Box>
     </>
   );

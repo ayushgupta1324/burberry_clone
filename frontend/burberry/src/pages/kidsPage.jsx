@@ -1,23 +1,28 @@
-import { Box, Button, Grid, Heading, HStack, Select, Text } from '@chakra-ui/react'
+import { Box, Grid, Heading, HStack, Select, Text } from '@chakra-ui/react'
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router'
 import Product from '../components/product'
+import SkeletonComponent from '../components/SkeletonComponent'
 
 const KidsPage = () => {
     const navigate = useNavigate()
     const [products, setProducts] = useState([])
     const [sort, setSort] = useState("")
+    const [isLoading, setIsLoading] = useState(false);
 
     const getProducts = async () => {
         const { data } = await axios.get(`https://white-lovebird-ring.cyclic.app/products?category=Children&price=${sort}`);
         setProducts(data)
+        setIsLoading(false)
+
     }
     const changeCategory = (category) => {
         navigate(`/${category}`)
     }
 
     useEffect(() => {
+        setIsLoading(true)
         getProducts()
     }, [sort])
 
@@ -41,13 +46,16 @@ const KidsPage = () => {
             </Box>
             <Text fontSize="12px">{products.length} results</Text>
             <Text fontWeight="500">Discover Heritage Trench Coats</Text>
-            <Grid mt="50px" mb="50px" gap="2px" gridTemplateColumns="repeat(4,1fr)">
+            {
+                isLoading?(<SkeletonComponent/>):(<Grid mt="50px" mb="50px" gap="2px" gridTemplateColumns="repeat(4,1fr)">
                 {
                     products.map((item) => {
                         return <Product key={item._id} {...item} />
                     })
                 }
-            </Grid>
+            </Grid>)
+            }
+            
             {/* <Button textTransform="uppercase" cursor="pointer" bg="transparent" padding="12px 40px">View 11 More</Button> */}
         </Box>
     )
