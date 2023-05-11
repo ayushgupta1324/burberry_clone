@@ -21,7 +21,7 @@ import { FaUserCheck } from "react-icons/fa";
 import { userLogout } from "../redux/AuthReducer/action";
 const Menubar = ({ item1, item2 }) => {
   const { name, token } = useSelector((store) => store.auth);
-  console.log(token, name);
+  // console.log(token, name);
   const dispatch = useDispatch();
   return (
     <div>

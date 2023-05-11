@@ -38,7 +38,7 @@ const SingleProductPage = () =>{
         }
         else
         {
-            console.log("Check cart data",data)
+            // console.log("Check cart data",data)
             let cartFlag = false;
             data.map((el)=>{
                 if(el._id===product._id)
@@ -74,7 +74,7 @@ const SingleProductPage = () =>{
     useEffect(() => {
         getProduct()
     }, [id])
-    console.log(product)
+    // console.log(product)
     return(
         <div>
         <Box backgroundColor={"white"} marginBottom="36px" pt="90px">

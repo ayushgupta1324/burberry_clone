@@ -36,7 +36,7 @@ const MensPage = () => {
   return (
     <>
       
-      <Box pb="50px" pt="96px">
+      <Box pb="50px">
         <Heading fontSize="16px">Men’S OUTERWEAR</Heading>
         <Text fontSize="14px" m="auto" maxW={["70%", "50%", "30%"]}>
           Honouring the spirit of adventure inherent in every Burberry garment,
@@ -65,6 +65,7 @@ const MensPage = () => {
               onChange={(e) => setSort(e.target.value)}
               maxW="100px"
               placeholder="Price"
+              cursor={"pointer"}
             >
               <option value="asc">Low to High</option>
               <option value="desc">High to Low</option>
@@ -74,6 +75,7 @@ const MensPage = () => {
               border="none"
               maxW="150px"
               placeholder="Category"
+              cursor={"pointer"}
             >
               <option value="womens">Womens</option>
               <option value="mens">Mens</option>

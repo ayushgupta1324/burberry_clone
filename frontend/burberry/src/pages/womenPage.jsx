@@ -63,7 +63,8 @@ const WomenPage = () => {
             value={sort}
             onChange={(e) => setSort(e.target.value)}
             maxW="100px"
-            placeholder="Sort"
+            placeholder="Price"
+            cursor={"pointer"}
           >
             <option value="asc">Low to High</option>
             <option value="desc">High to Low</option>
@@ -73,6 +74,7 @@ const WomenPage = () => {
             border="none"
             maxW="150px"
             placeholder="Category"
+            cursor={"pointer"}
           >
             <option value="womens">Womens</option>
             <option value="mens">Mens</option>
